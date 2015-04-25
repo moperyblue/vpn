@@ -80,7 +80,7 @@ echo "3. add VPN user"
 read num
 
 case "$num" in
-[1] ) (installVPN);;
+[1] ) (installVPN $1);;
 [2] ) (repaireVPN);;
 [3] ) (addVPNuser);;
 *) echo "nothing,exit";;
