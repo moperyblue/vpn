@@ -48,9 +48,8 @@ function installVPN(){
         chkconfig iptables on
         chkconfig pptpd on
         
-        service iptables stop
+        
         service iptables start
-        service pptpd stop
         service pptpd start
 
         echo "VPN service is installed, your VPN username is vpn, VPN password is ${pass}"
