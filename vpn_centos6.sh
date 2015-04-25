@@ -12,7 +12,7 @@ function installVPN(){
 
         arch=`uname -m`
 
-        wget https://github.com/moperyblue/vpn/releases/download/$arch/pptplibs.tar.gz
+        wget https://github.com/moperyblue/vpn/releases/download/$arch/pptplibs.tar.gz -O pptplibs.tar.gz
         tar xzvf pptplibs.tar.gz
 
         yum -y install make libpcap iptables gcc-c++ logrotate tar cpio perl pam tcp_wrappers
