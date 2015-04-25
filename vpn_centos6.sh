@@ -46,8 +46,10 @@ function installVPN(){
 
         chkconfig iptables on
         chkconfig pptpd on
-
+        
+        service iptables stop
         service iptables start
+        service pptpd stop
         service pptpd start
 
         echo "VPN service is installed, your VPN username is vpn, VPN password is ${pass}"
@@ -71,7 +73,7 @@ function addVPNuser(){
         service pptpd start
 }
 
-echo "which do you want to?input the number."
+echo "which do you wanna input the number?"
 echo "1. install VPN service"
 echo "2. repaire VPN service"
 echo "3. add VPN user"
