@@ -34,9 +34,10 @@ function installVPN(){
         [[ $(grep -c "ms-dns 8.8.4.4" /etc/ppp/options.pptpd) == 0 ]] && echo "ms-dns 8.8.4.4" >> /etc/ppp/options.pptpd
 
         pass=`openssl rand 6 -base64`
-        if [ "$1" != "" ]
-        then pass=$1
-        fi
+        #if [ "$1" != "" ]
+        #then pass=$1
+        #fi
+        [[ -n $1 ]] && pass=$1
 
         echo "vpn pptpd ${pass} *" >> /etc/ppp/chap-secrets
 
