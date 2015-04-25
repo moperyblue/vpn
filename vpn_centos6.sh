@@ -26,12 +26,12 @@ function installVPN(){
 
         mknod /dev/ppp c 108 0
         echo 1 > /proc/sys/net/ipv4/ip_forward
-        echo "mknod /dev/ppp c 108 0" >> /etc/rc.local
-        echo "echo 1 > /proc/sys/net/ipv4/ip_forward" >> /etc/rc.local
-        echo "localip 172.16.36.1" >> /etc/pptpd.conf
-        echo "remoteip 172.16.36.2-254" >> /etc/pptpd.conf
-        echo "ms-dns 8.8.8.8" >> /etc/ppp/options.pptpd
-        echo "ms-dns 8.8.4.4" >> /etc/ppp/options.pptpd
+        [[ $(grep -c "mknod /dev/ppp" /etc/rc.local) == 0 ]] && echo "mknod /dev/ppp c 108 0" >> /etc/rc.local
+        [[ $(grep -c "echo 1" /etc/rc.local) == 0 ]] && echo "echo 1 > /proc/sys/net/ipv4/ip_forward" >> /etc/rc.local
+        [[ $(grep -c "localip 172.16.36.1" /etc/pptpd.conf) == 0 ]] && echo "localip 172.16.36.1" >> /etc/pptpd.conf
+        [[ $(grep -c "remoteip 172.16.36.2-254" /etc/pptpd.conf) == 0 ]] && echo "remoteip 172.16.36.2-254" >> /etc/pptpd.conf
+        [[ $(grep -c "ms-dns 8.8.8.8" /etc/ppp/options.pptpd) == 0 ]] && echo "ms-dns 8.8.8.8" >> /etc/ppp/options.pptpd
+        [[ $(grep -c "ms-dns 8.8.4.4" /etc/ppp/options.pptpd) == 0 ]] && echo "ms-dns 8.8.4.4" >> /etc/ppp/options.pptpd
 
         pass=`openssl rand 6 -base64`
         if [ "$1" != "" ]
