@@ -22,7 +22,7 @@ function installVPN(){
         rpm -Uvh ppp-2.4.5-17.0.rhel6.$arch.rpm
         rpm -ivh pptpd-1.3.4-2.el6.$arch.rpm
 
-        #rm -rf dkms-2.0.17.5-1.noarch.rpm kernel_ppp_mppe-1.0.2-3dkms.noarch.rpm ppp-2.4.5-17.0.rhel6* pptpd-1.3.4-2.el6*
+        rm -rf pptplibs* *.rpm
 
         mknod /dev/ppp c 108 0
         echo 1 > /proc/sys/net/ipv4/ip_forward
