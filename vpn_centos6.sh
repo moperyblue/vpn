@@ -2,7 +2,7 @@
 
 function installVPN(){
         echo "begin to install VPN services";
-        #check wether vps suppot ppp and tun
+        #check whether ppp and tun are supported on the vps
 
         yum remove -y pptpd ppp
         iptables --flush POSTROUTING --table nat
