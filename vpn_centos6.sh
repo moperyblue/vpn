@@ -41,7 +41,7 @@ function installVPN(){
 
         echo "vpn pptpd ${pass} *" >> /etc/ppp/chap-secrets
 
-        iptables -t nat -A POSTROUTING -s 172.16.36.0/24 -j SNAT --to-source `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk 'NR==1 { print $1}'`
+        iptables -t nat -A POSTROUTING -s 172.16.36.0/24 -j SNAT --to-source `ifconfig|awk '/inet /'|grep -v 127.0.0.1|grep -oP '(?<=[ :])(([0-9]+.){3}.[0-9]+)'|head -1`
         iptables -A FORWARD -p tcp --syn -s 172.16.36.0/24 -j TCPMSS --set-mss 1356
         service iptables save
 
